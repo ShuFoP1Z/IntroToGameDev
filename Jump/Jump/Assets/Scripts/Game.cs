@@ -24,9 +24,11 @@ public class Game : MonoBehaviour
 	private enum State { Starting, Playing, Gameover, GameRules, NameEntry}
 
 	[SerializeField] private GameSettings GameSettingsPrefab;
+    [SerializeField] private DifficultyLevel DifficultyLevelPrefab;
 
 	private ScoreEntry[] mScores;
 	private GameSettings mSettings;
+    private DifficultyLevel mDifficulty;
 	private Environment mEnvironment;
 	private Player mPlayer;
 	private int mScore;
@@ -45,6 +47,8 @@ public class Game : MonoBehaviour
 		}
 		LoadScores();
 		mSettings = Instantiate( GameSettingsPrefab ) as GameSettings;
+        mDifficulty = Instantiate(DifficultyLevelPrefab) as DifficultyLevel;
+        mDifficulty.NumberOfPlatformsClimbed = 0;
 		mEnvironment = GetComponentInChildren<Environment>();
 		mEnvironment.ApplySettings( mSettings );
 		mEnvironment.Reset();
@@ -104,7 +108,8 @@ public class Game : MonoBehaviour
 		if( mState == State.Playing )
 		{
 			mScore += mSettings.PointsPerPlatform;
-			
+            ++mDifficulty.NumberOfPlatformsClimbed;
+
 			if( OnScoreChange != null )
 			{
 				OnScoreChange( mLives, mScore );

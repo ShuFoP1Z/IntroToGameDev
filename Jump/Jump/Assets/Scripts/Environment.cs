@@ -9,6 +9,7 @@ public class Environment : MonoBehaviour
 	private List<Platform> mPlatforms;
 	private PlatformFactory mPlatformFactory;
 	private GameSettings mSettings;
+    private DifficultyLevel mDifficulty;
 	private float mPlatformNextSpawnDistance;
 	private float mPlatformLocation;
 	private float mDestoryTime;
@@ -40,8 +41,8 @@ public class Environment : MonoBehaviour
 			mPlatformNextSpawnDistance += mSettings.VerticalDistanceBetweenPlatforms;
 			mLeftPlatform = !mLeftPlatform;
 
-			mPlatformLocation += mSettings.PlatformLocationRamp;
-			mDestoryTime -= mSettings.PlatformDestoryTimeRamp;
+            mPlatformLocation += mDifficulty.PlatformLocationRamp;
+            mDestoryTime -= mDifficulty.PlatformDestoryTimeRamp;
 		}
 	}
 
@@ -59,7 +60,7 @@ public class Environment : MonoBehaviour
 		}
 		mPlatformFactory.ForceRecycle();
 		mPlatformNextSpawnDistance = PlatformStart;
-		mPlatformLocation = mSettings.StartingPlatformLocation;
-		mDestoryTime = mSettings.StartingPlatformDestoryTime;
+        mPlatformLocation = mDifficulty.StartingPlatformLocation;
+        mDestoryTime = mDifficulty.StartingPlatformDestoryTime;
 	}
 }

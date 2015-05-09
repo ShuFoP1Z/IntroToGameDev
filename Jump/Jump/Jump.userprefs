@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Hud.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game.cs">
     <Files>
-      <File FileName="Assets\Scripts\Hud.cs" Line="19" Column="44" />
-      <File FileName="Assets\Scripts\Game.cs" Line="45" Column="4" />
-      <File FileName="Assets\Scripts\PlatformFactory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameSettings.cs" Line="16" Column="1" />
+      <File FileName="Assets\Scripts\DifficultyLevel.cs" Line="6" Column="12" />
+      <File FileName="Assets\Scripts\Game.cs" Line="46" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
