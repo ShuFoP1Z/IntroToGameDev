@@ -5,13 +5,13 @@ using System.Collections.Generic;
 public class PlatformFactory : MonoBehaviour 
 {
 	[SerializeField] private Platform [] PlatformPrefab;
-	[SerializeField] private float RecycleWaitTime = 5.0f;
+	[SerializeField] private float RecycleWaitTime = 1.0f;
 	
 	private Platform[,] mPool;
 	private List<Platform> mAvailable;
 	private WaitForSeconds mRecycleWaitTime;
 	
-	private int MAX_PLATFORMS = 20;
+	private int MAX_PLATFORMS = 5;
 	
 	void Awake()
 	{

@@ -13,7 +13,7 @@ public class Environment : MonoBehaviour
 	private float mPlatformLocation;
 	private float mDestoryTime;
 	private bool mLeftPlatform;
-    private int mDiffLevel = 0;
+    private int mDiffLevel;
 
 	void Awake()
 	{
@@ -30,15 +30,15 @@ public class Environment : MonoBehaviour
 	{
 		Platform platform = mPlatformFactory.GetNextPlatform();
 
-        if (mSettings.NumberOfPlatformsClimbed >= 0 && mSettings.NumberOfPlatformsClimbed < 4)
+        if (mSettings.NumberOfPlatformsClimbed >= 0 && mSettings.NumberOfPlatformsClimbed < 5)
             mDiffLevel = 0;
-        if (mSettings.NumberOfPlatformsClimbed >= 4 && mSettings.NumberOfPlatformsClimbed < 8)
+        if (mSettings.NumberOfPlatformsClimbed >= 5 && mSettings.NumberOfPlatformsClimbed < 10)
             mDiffLevel = 1;
-        if (mSettings.NumberOfPlatformsClimbed >= 8 && mSettings.NumberOfPlatformsClimbed < 12)
+        if (mSettings.NumberOfPlatformsClimbed >= 10 && mSettings.NumberOfPlatformsClimbed < 15)
             mDiffLevel = 2;
-        if (mSettings.NumberOfPlatformsClimbed >= 12 && mSettings.NumberOfPlatformsClimbed < 16)
+        if (mSettings.NumberOfPlatformsClimbed >= 15 && mSettings.NumberOfPlatformsClimbed < 20)
             mDiffLevel = 3;
-        if (mSettings.NumberOfPlatformsClimbed >= 16 && mSettings.NumberOfPlatformsClimbed < 20)
+        if (mSettings.NumberOfPlatformsClimbed >= 20)
             mDiffLevel = 4;
        
 		if( platform != null )
@@ -73,7 +73,12 @@ public class Environment : MonoBehaviour
         mDiffLevel = 0;
 		mPlatformFactory.ForceRecycle();
 		mPlatformNextSpawnDistance = PlatformStart;
+        /*
+        // NO IDEA WHY THIS WON'T WORK
         mPlatformLocation = mSettings.getDifficultyLocation(mDiffLevel);
         mDestoryTime = mSettings.getDifficultyDestroy(mDiffLevel);
+        */
+        mPlatformLocation = 1.0f;
+        mDestoryTime = 5.0f;
 	}
 }

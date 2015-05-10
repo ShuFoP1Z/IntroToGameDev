@@ -45,7 +45,7 @@ public class Game : MonoBehaviour
 		}
 		LoadScores();
 		mSettings = Instantiate( GameSettingsPrefab ) as GameSettings;
-		mEnvironment = GetComponentInChildren<Environment>();
+        mEnvironment = GetComponentInChildren<Environment>();
 		mEnvironment.ApplySettings( mSettings );
 		mEnvironment.Reset();
 		mPlayer = GetComponentInChildren<Player>();

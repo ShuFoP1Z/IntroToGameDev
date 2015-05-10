@@ -18,22 +18,11 @@ public class GameSettings : MonoBehaviour
     {
         mDifficulty = new DifficultyLevel[5];
         for (int i = 0; i < mDifficulty.Length; ++i)
+        {
             mDifficulty[i] = new DifficultyLevel();
-        
-        mDifficulty[0].StartingPlatformLocation = 1.0f;
-        mDifficulty[0].StartingPlatformDestoryTime = 5.0f;
-        
-        mDifficulty[1].StartingPlatformLocation = 1.1f;
-        mDifficulty[1].StartingPlatformDestoryTime = 4.7f;
-
-        mDifficulty[2].StartingPlatformLocation = 1.2f;
-        mDifficulty[2].StartingPlatformDestoryTime = 4.3f;
-
-        mDifficulty[3].StartingPlatformLocation = 1.5f;
-        mDifficulty[3].StartingPlatformDestoryTime = 4.0f;
-
-        mDifficulty[4].StartingPlatformLocation = 2.7f;
-        mDifficulty[4].StartingPlatformDestoryTime = 3.7f;
+            mDifficulty[i].StartingPlatformLocation = (1.00f + (0.05f * i));
+            mDifficulty[i].StartingPlatformDestoryTime = (5.0f - (0.3f * i));
+        }
     }
 
     public float getDifficultyLocation(int i)
