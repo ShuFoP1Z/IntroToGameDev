@@ -11,6 +11,9 @@ public class Game : MonoBehaviour
 		public int Score;
 	}
 
+	public delegate void LeaderboardEvent ( ScoreEntry[] scores);
+	public static event LeaderboardEvent OnLeaderboardUpdated;
+
 	public delegate void GameEvent( int lives, int score );
 	public static event GameEvent OnGameRules;
 	public static event GameEvent OnNewGame;
@@ -36,14 +39,7 @@ public class Game : MonoBehaviour
 
 	void Start() 
 	{
-		mScores = new ScoreEntry[MAX_SCORES];
-		for (int count = 0; count < MAX_SCORES; count++)
-		{
-			mScores[count] = new ScoreEntry();
-			mScores[count].Name = "Player " + (count + 1);
-			mScores[count].Score = 30000 - (count *1000);
-		}
-		LoadScores();
+
 		mSettings = Instantiate( GameSettingsPrefab ) as GameSettings;
 		mEnvironment = GetComponentInChildren<Environment>();
 		mEnvironment.ApplySettings( mSettings );
@@ -57,6 +53,24 @@ public class Game : MonoBehaviour
 		StartingPlatform.OnPlayerStart += HandleOnPlayerStart;
 		StartingPlatform.OnPlayerFell += HandleOnPlayerFell;
 		Platform.OnPlayerJoinedPlatform += HandleOnPlayerJoinedPlatform;
+		Pickup.OnPlayerCollectedPickup += HandleOnPlayerCollectedPickup;
+
+		mScores = new ScoreEntry[MAX_SCORES];
+		for (int count = 0; count < MAX_SCORES; count++)
+		{
+			mScores[count] = new ScoreEntry();
+			mScores[count].Name = "Player " + (count + 1);
+			mScores[count].Score = 30000 - (count *1000);
+		}
+		LoadScores();
+	}
+
+	void HandleOnPlayerCollectedPickup ()
+	{
+		if( mLives < mSettings.StartingLives)
+		{
+			mLives ++;
+		}
 	}
 	
 	void Update()
@@ -145,6 +159,7 @@ public class Game : MonoBehaviour
 		{
 			ChangeState( State.Starting );
 		}
+		LoadScores ();
 	}
 
 	void UpdateGameRules ()
@@ -220,6 +235,11 @@ public class Game : MonoBehaviour
 			{
 				InsertScore(LastKnownPlayerName, mScore);
 				SaveScores ();
+
+				if( OnLeaderboardUpdated != null)
+				{
+					OnLeaderboardUpdated( mScores);
+				}
 			}
 
 			switch( s )
@@ -237,6 +257,10 @@ public class Game : MonoBehaviour
 				if( OnNewGame != null )
 				{
 					OnNewGame( mLives, mScore );
+				}
+				if(OnLeaderboardUpdated != null)
+				{
+					OnLeaderboardUpdated(mScores);
 				}
 				break;
 			case State.Gameover:
