@@ -13,7 +13,7 @@ public class Environment : MonoBehaviour
 	private float mPlatformLocation;
 	private float mDestoryTime;
 	private bool mLeftPlatform;
-    private int mDiffLevel;
+    private int mDiffLevel = 0;
 
 	void Awake()
 	{
@@ -53,9 +53,9 @@ public class Environment : MonoBehaviour
 			mPlatformNextSpawnDistance += mSettings.VerticalDistanceBetweenPlatforms;
 			mLeftPlatform = !mLeftPlatform;
 
-            mPlatformLocation = mSettings.Difficulty[mDiffLevel].StartingPlatformLocation;
-            mDestoryTime = mSettings.Difficulty[mDiffLevel].StartingPlatformDestoryTime;
-		}
+            mPlatformLocation = mSettings.getDifficultyLocation(mDiffLevel);
+            mDestoryTime = mSettings.getDifficultyDestroy(mDiffLevel);
+        }
 	}
 
 	public void ApplySettings( GameSettings settings )
@@ -73,7 +73,7 @@ public class Environment : MonoBehaviour
         mDiffLevel = 0;
 		mPlatformFactory.ForceRecycle();
 		mPlatformNextSpawnDistance = PlatformStart;
-        mPlatformLocation = mSettings.Difficulty[mDiffLevel].StartingPlatformLocation;
-        mDestoryTime = mSettings.Difficulty[mDiffLevel].StartingPlatformDestoryTime;
+        mPlatformLocation = mSettings.getDifficultyLocation(mDiffLevel);
+        mDestoryTime = mSettings.getDifficultyDestroy(mDiffLevel);
 	}
 }

@@ -13,7 +13,6 @@ public class GameSettings : MonoBehaviour
 	public int PointsPerPlatform { get { return mPointsPerPlatform; } set { mPointsPerPlatform = value; } }
 	public int StartingLives { get { return mStartingLives; } set { mStartingLives = value; } }
     public int NumberOfPlatformsClimbed { get { return mNumberOfPlatformsClimbed; } set { mNumberOfPlatformsClimbed = value; } }
-    public DifficultyLevel[] Difficulty { get { return mDifficulty; } set { mDifficulty = value; } }
 
     void Start()
     {
@@ -35,5 +34,15 @@ public class GameSettings : MonoBehaviour
 
         mDifficulty[4].StartingPlatformLocation = 2.7f;
         mDifficulty[4].StartingPlatformDestoryTime = 3.7f;
+    }
+
+    public float getDifficultyLocation(int i)
+    {
+        return mDifficulty[i].StartingPlatformLocation;
+    }
+
+    public float getDifficultyDestroy(int i)
+    {
+        return mDifficulty[i].StartingPlatformDestoryTime;
     }
 }
