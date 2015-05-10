@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
 	private ScoreEntry[] mScores;
 	private GameSettings mSettings;
 	private Environment mEnvironment;
-	private Player mPlayer;
+	private Player mPlayer = new Player();
 	private int mScore;
 	private int mLives;
 	private State mState;  

@@ -10,3 +10,15 @@ C:\Users\Ashley\Desktop\IntroToGameDev-master\Jump\Jump\Temp\bin\Debug\ICSharpCo
 C:\Users\Ashley\Desktop\IntroToGameDev-master\Jump\Jump\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
 C:\Users\Ashley\Desktop\IntroToGameDev-master\Jump\Jump\obj\Debug\Assembly-CSharp.dll
 C:\Users\Ashley\Desktop\IntroToGameDev-master\Jump\Jump\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\obj\Debug\Assembly-CSharp.dll
+C:\Users\Ashley\Documents\GitHub\IntroToGameDev\Jump\Jump\obj\Debug\Assembly-CSharp.pdb

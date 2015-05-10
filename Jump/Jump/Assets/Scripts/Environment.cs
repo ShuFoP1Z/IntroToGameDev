@@ -8,7 +8,7 @@ public class Environment : MonoBehaviour
 
 	private List<Platform> mPlatforms;
 	private PlatformFactory mPlatformFactory;
-	private GameSettings mSettings;
+    private GameSettings mSettings = new GameSettings();
 	private float mPlatformNextSpawnDistance;
 	private float mPlatformLocation;
 	private float mDestoryTime;
@@ -40,7 +40,7 @@ public class Environment : MonoBehaviour
             mDiffLevel = 3;
         if (mSettings.NumberOfPlatformsClimbed >= 16 && mSettings.NumberOfPlatformsClimbed < 20)
             mDiffLevel = 4;
-
+       
 		if( platform != null )
 		{
 			float location = mLeftPlatform ? -mPlatformLocation : mPlatformLocation;
@@ -53,7 +53,7 @@ public class Environment : MonoBehaviour
 			mPlatformNextSpawnDistance += mSettings.VerticalDistanceBetweenPlatforms;
 			mLeftPlatform = !mLeftPlatform;
 
-            mPlatformLocation = mSettings.Difficulty[mDiffLevel].StartingPlatformLocation;      //It's this that isn't working
+            mPlatformLocation = mSettings.Difficulty[mDiffLevel].StartingPlatformLocation;
             mDestoryTime = mSettings.Difficulty[mDiffLevel].StartingPlatformDestoryTime;
 		}
 	}

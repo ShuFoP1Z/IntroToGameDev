@@ -18,7 +18,9 @@ public class GameSettings : MonoBehaviour
     void Start()
     {
         mDifficulty = new DifficultyLevel[5];
-
+        for (int i = 0; i < mDifficulty.Length; ++i)
+            mDifficulty[i] = new DifficultyLevel();
+        
         mDifficulty[0].StartingPlatformLocation = 1.0f;
         mDifficulty[0].StartingPlatformDestoryTime = 5.0f;
         
