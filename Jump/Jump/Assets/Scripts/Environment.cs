@@ -9,11 +9,11 @@ public class Environment : MonoBehaviour
 	private List<Platform> mPlatforms;
 	private PlatformFactory mPlatformFactory;
 	private GameSettings mSettings;
-    private DifficultyLevel mDifficulty;
 	private float mPlatformNextSpawnDistance;
 	private float mPlatformLocation;
 	private float mDestoryTime;
 	private bool mLeftPlatform;
+    private int mDiffLevel;
 
 	void Awake()
 	{
@@ -24,11 +24,23 @@ public class Environment : MonoBehaviour
 	void Start() 
 	{
 		mPlatformNextSpawnDistance = PlatformStart;
-	}
+    }
 	
 	void Update() 
 	{
 		Platform platform = mPlatformFactory.GetNextPlatform();
+
+        if (mSettings.NumberOfPlatformsClimbed >= 0 && mSettings.NumberOfPlatformsClimbed < 4)
+            mDiffLevel = 0;
+        if (mSettings.NumberOfPlatformsClimbed >= 4 && mSettings.NumberOfPlatformsClimbed < 8)
+            mDiffLevel = 1;
+        if (mSettings.NumberOfPlatformsClimbed >= 8 && mSettings.NumberOfPlatformsClimbed < 12)
+            mDiffLevel = 2;
+        if (mSettings.NumberOfPlatformsClimbed >= 12 && mSettings.NumberOfPlatformsClimbed < 16)
+            mDiffLevel = 3;
+        if (mSettings.NumberOfPlatformsClimbed >= 16 && mSettings.NumberOfPlatformsClimbed < 20)
+            mDiffLevel = 4;
+
 		if( platform != null )
 		{
 			float location = mLeftPlatform ? -mPlatformLocation : mPlatformLocation;
@@ -41,8 +53,8 @@ public class Environment : MonoBehaviour
 			mPlatformNextSpawnDistance += mSettings.VerticalDistanceBetweenPlatforms;
 			mLeftPlatform = !mLeftPlatform;
 
-            mPlatformLocation += mDifficulty.PlatformLocationRamp;
-            mDestoryTime -= mDifficulty.PlatformDestoryTimeRamp;
+            mPlatformLocation = mSettings.Difficulty[mDiffLevel].StartingPlatformLocation;      //It's this that isn't working
+            mDestoryTime = mSettings.Difficulty[mDiffLevel].StartingPlatformDestoryTime;
 		}
 	}
 
@@ -58,9 +70,10 @@ public class Environment : MonoBehaviour
 			mPlatforms[count].gameObject.SetActive( false );
 			mPlatforms[count].IsAlive = false;
 		}
+        mDiffLevel = 0;
 		mPlatformFactory.ForceRecycle();
 		mPlatformNextSpawnDistance = PlatformStart;
-        mPlatformLocation = mDifficulty.StartingPlatformLocation;
-        mDestoryTime = mDifficulty.StartingPlatformDestoryTime;
+        mPlatformLocation = mSettings.Difficulty[mDiffLevel].StartingPlatformLocation;
+        mDestoryTime = mSettings.Difficulty[mDiffLevel].StartingPlatformDestoryTime;
 	}
 }
