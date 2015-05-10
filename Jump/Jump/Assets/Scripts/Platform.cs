@@ -16,6 +16,16 @@ public class Platform : MonoBehaviour
 
 	public float DestroyTime { set; get; }
 
+	void Start()
+	{
+		ParticleSystem sys = gameObject.GetComponentInChildren<ParticleSystem>();
+		if(sys != null)
+		{
+			sys.enableEmission = false;
+			sys.Stop();
+		}
+	}
+
 	void OnEnable()
 	{
 		mHasBeenActivated = false;
@@ -42,6 +52,7 @@ public class Platform : MonoBehaviour
 				mHasBeenActivated = true;
 				if( mShake != null )
 				{
+					StartCoroutine(DoParticleOnOff());
 					mShake.enabled = true;
 				}
 			}
@@ -60,6 +71,21 @@ public class Platform : MonoBehaviour
 					OnPlayerLeftPlatform();
 				}
 			}
+		}
+	}
+
+	
+	private IEnumerator DoParticleOnOff()
+	{
+		ParticleSystem sys = gameObject.GetComponentInChildren<ParticleSystem>();
+		if(sys != null)
+		{
+			sys.enableEmission = true;
+			sys.Play();
+			
+			yield return new WaitForSeconds(DestroyTime);
+			
+			sys.enableEmission = false;
 		}
 	}
 
