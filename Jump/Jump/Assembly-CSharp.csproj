@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Environment.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\GameSettings.cs" />
+     <Compile Include="Assets\Scripts\HideLogo.cs" />
      <Compile Include="Assets\Scripts\Hud.cs" />
      <Compile Include="Assets\Scripts\MouseInput.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
