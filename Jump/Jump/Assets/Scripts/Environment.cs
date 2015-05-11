@@ -46,7 +46,7 @@ public class Environment : MonoBehaviour
             mPlatformLocation = mSettings.getDifficultyLocation(mDiffLevel);
             mDestoryTime = mSettings.getDifficultyDestroy(mDiffLevel);
 
-            float location = mLeftPlatform ? mPlatformLocation : mPlatformLocation;
+            float location = mLeftPlatform ? -mPlatformLocation : mPlatformLocation;
             platform.transform.position = new Vector3(location, mPlatformNextSpawnDistance, 0.0f);
             platform.gameObject.SetActive(true);
             platform.DestroyTime = mDestoryTime;
