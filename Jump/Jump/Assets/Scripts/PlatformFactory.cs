@@ -23,8 +23,9 @@ public class PlatformFactory : MonoBehaviour
 			for (int type = 0; type < PlatformPrefab.Length; type++) 
 			{
 				Platform planet = Instantiate (PlatformPrefab[Random.Range(0,4)]) as Platform;
-				mPool [count,type] = planet;
-			
+                planet.setType(Random.Range(0, 100));
+                mPool [count,type] = planet;
+                
 				mAvailable.Add (planet);
 			
 				mPool [count,type].gameObject.name = "PoolPlatform" + (count + 1); 
@@ -32,8 +33,16 @@ public class PlatformFactory : MonoBehaviour
 				mPool [count,type].transform.parent = transform;
 			}
 		}
-		
-		mRecycleWaitTime = new WaitForSeconds( RecycleWaitTime );
+
+        for (int i = 0; i < MAX_PLATFORMS; ++i)
+        {
+            for (int j = 0; j < PlatformPrefab.Length; ++j)
+            {
+                //Debug.Log(mPool[i, j].isMoveable());
+            }
+        }
+
+            mRecycleWaitTime = new WaitForSeconds(RecycleWaitTime);
 		StartCoroutine( Recycle() );
 	}
 	
