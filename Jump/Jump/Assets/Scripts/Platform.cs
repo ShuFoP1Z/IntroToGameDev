@@ -54,7 +54,7 @@ public class Platform : MonoBehaviour
 				}
 								
 				mHasBeenActivated = true;
-				if( mShake != null && !mWillRotate)
+				if( mShake != null)
 				{
 					StartCoroutine(DoParticleOnOff());
 					mShake.enabled = true;
