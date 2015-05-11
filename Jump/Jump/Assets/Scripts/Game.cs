@@ -118,7 +118,8 @@ public class Game : MonoBehaviour
 		if( mState == State.Playing )
 		{
 			mScore += mSettings.PointsPerPlatform;
-			
+            ++mSettings.NumberOfPlatformsClimbed;
+
 			if( OnScoreChange != null )
 			{
 				OnScoreChange( mLives, mScore );
